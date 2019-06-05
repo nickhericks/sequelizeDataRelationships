@@ -18,7 +18,12 @@ module.exports = (sequelize, DataTypes) => {
   });
 
   Movie.associate = (models) => {
-    Movie.belongsTo(models.Person);
+    Movie.belongsTo(models.Person, {
+      foreignKey: {
+        fieldName: "directorPersonId",
+        allowNull: false
+      }
+    });
   };
 
   return Movie;
