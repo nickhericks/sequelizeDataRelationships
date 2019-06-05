@@ -1,5 +1,7 @@
 'use strict';
 
+// Initialize sequelize and models variables to
+// the sequelize and models objects imported from the ./db module
 const { sequelize, models } = require('./db');
 
 // Get references to our models.
@@ -19,8 +21,8 @@ let theIncredibles;
 
 console.log('Testing the connection to the database...');
 
-// Test the connection to the database.
 sequelize
+	// Test connection to the database.
   .authenticate()
   .then(() => {
     console.log('Synchronizing the models with the database...');
