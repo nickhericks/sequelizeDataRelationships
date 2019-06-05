@@ -18,7 +18,7 @@ module.exports = (sequelize, DataTypes) => {
   });
 
   Person.associate = (models) => {
-    // TODO Add associations.
+   Person.hasMany(models.Movie);
   };
 
   return Person;

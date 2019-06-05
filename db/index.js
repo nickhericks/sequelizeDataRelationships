@@ -7,21 +7,22 @@ const Sequelize = require('sequelize');
 console.info('Instantiating and configuring the Sequelize object instance...');
 
 const options = {
-  dialect: 'sqlite',
-  storage: 'movies.db',
+  dialect: "sqlite",
+  storage: "movies.db",
   // This disables the use of string based operators
   // in order to improve the security of our code.
   operatorsAliases: false,
   // This option configures Sequelize to always force the synchronization
   // of our models by dropping any existing tables.
+  // This causes the model's associated tables in the database to be dropped (i.e. deleted) and created every time the application is started, which makes it easy to make a change, run the app, and test the change.
   sync: { force: true },
   define: {
     // This option removes the `createdAt` and `updatedAt` columns from the tables
     // that Sequelize generates from our models. These columns are often useful
     // with production apps, so we'd typically leave them enabled, but for our
     // purposes let's keep things as simple as possible.
-    timestamps: false,
-  },
+    timestamps: false
+  }
 };
 
 const sequelize = new Sequelize(options);
