@@ -107,7 +107,14 @@ sequelize
 
     // TODO Update this query to include any related data.
 
-    return Person.findAll();
+    return Person.findAll({
+			include: [
+				{
+					model: Movie,
+					as: 'director'
+				}
+			]
+		});
   })
   .then((data) => {
     console.log(JSON.stringify(data, null, 2));
