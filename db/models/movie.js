@@ -25,7 +25,15 @@ module.exports = (sequelize, DataTypes) => {
         allowNull: false
       }
     });
-  };
+
+    Movie.belongsTo(models.Person, {
+			as: 'actor',
+      foreignKey: {
+        fieldName: "actorPersonId",
+        allowNull: false
+      }
+    });
+	};
 
   return Movie;
 };

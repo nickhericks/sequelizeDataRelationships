@@ -69,12 +69,14 @@ sequelize
       Movie.create({
         title: "The Iron Giant",
         releaseYear: 1999,
-        directorPersonId: bradBird.id
+        directorPersonId: bradBird.id,
+        actorPersonId: vinDiesel.id,
       }),
       Movie.create({
         title: "The Incredibles",
         releaseYear: 2004,
-        directorPersonId: bradBird.id
+        directorPersonId: bradBird.id,
+        actorPersonId: craigTNelson.id,
       })
     ]);
   })
@@ -98,7 +100,11 @@ sequelize
 				{
 					model: Person,
 					as: 'director'
-				}
+				},
+				{
+					model: Person,
+					as: 'actor'
+				},
 			]
 		});
   })
@@ -112,7 +118,11 @@ sequelize
 				{
 					model: Movie,
 					as: 'director'
-				}
+				},
+				{
+					model: Movie,
+					as: 'actor'
+				},
 			]
 		});
   })
