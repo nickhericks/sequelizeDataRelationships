@@ -67,13 +67,15 @@ sequelize
 
     return Promise.all([
       Movie.create({
-        title: 'The Iron Giant',
+        title: "The Iron Giant",
         releaseYear: 1999,
+        directorPersonId: bradBird.id
       }),
       Movie.create({
-        title: 'The Incredibles',
+        title: "The Incredibles",
         releaseYear: 2004,
-      }),
+        directorPersonId: bradBird.id
+      })
     ]);
   })
   .then((data) => {
@@ -91,7 +93,14 @@ sequelize
 
     // TODO Update this query to include any related data.
 
-    return Movie.findAll();
+    return Movie.findAll({
+			include: [
+				{
+					model: Person,
+					as: 'director'
+				}
+			]
+		});
   })
   .then((data) => {
     console.log(JSON.stringify(data, null, 2));
